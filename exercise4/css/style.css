@@ -16,7 +16,7 @@ body{
 }
 
 .container{
-    width: 960px;
+    max-width: 960px;
     margin: auto;
     padding: 0 3rem;
     overflow: hidden;
@@ -71,4 +71,14 @@ body{
 
 .btn:hover{
     opacity: 0.7;
+}
+
+@media(max-width: 760px){
+    .showcase h1{
+        font-size: 3em;
+    }
+
+    .showcase p{
+        font-size: 1.2em;
+    }
 }
