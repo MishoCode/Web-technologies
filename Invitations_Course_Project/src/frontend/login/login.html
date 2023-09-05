@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./login.css" />
+    <script src="login.js" type="module" defer></script>
+  </head>
+  <body data-theme="light">
+    <section class="login">
+      <h1>Login</h1>
+
+      <form>
+        <input
+          required
+          type="email"
+          name="email"
+          class="input"
+          placeholder="Email"
+        />
+        <input
+          required
+          type="password"
+          name="password"
+          class="input"
+          placeholder="Password"
+        />
+
+        <button name="submit">Login</button>
+      </form>
+
+      <section class="registration">
+        <p>
+          You don't have an account?
+          <a href="./../register/register.html">Register!</a>
+        </p>
+      </section>
+
+      <section class="hide" id="form-error"></section>
+
+      <section class="theme-switcher">
+        <input type="checkbox" id="switcher" />
+        <label for="switcher">switch</label>
+      </section>
+    </section>
+  </body>
+</html>

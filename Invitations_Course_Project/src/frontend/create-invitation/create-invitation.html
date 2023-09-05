@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Invitation</title>
+    <link rel="stylesheet" href="./create-invitation.css" />
+    <script src="create-invitation.js" type="module" defer></script>
+    <script>
+      if (
+        !localStorage.getItem("isLoggedIn") ||
+        localStorage.getItem("isLoggedIn") === "false"
+      ) {
+        window.location.replace("../login/login.html");
+      }
+    </script>
+  </head>
+  <body data-theme="light">
+    <nav>
+      <ul>
+        <li><a href="../upcoming-invitations/upcoming-invitations.html">Upcoming invitations</a></li>
+        <li><a href="../dashboard/dashboard.html">All invitations</a></li>
+      </ul>
+
+      <section class="logout">
+        <button name="logout-button">Logout</button>
+      </section>
+    </nav>
+
+    <section class="create-invitation">
+      <h1>Create Invitation</h1>
+
+      <form>
+        <input
+          type="text"
+          required
+          name="title"
+          class="input"
+          placeholder="Title for the paper"
+        />
+        <input
+          type="text"
+          required
+          name="place"
+          class="input"
+          placeholder="Place for the presentation"
+        />
+
+        <input type="date" required name="date" class="input" />
+
+        <input
+          type="time"
+          required
+          name="time"
+          class="input"
+          min="07:00"
+          max="18:00"
+        />
+
+        <input
+          type="file"
+          class="input"
+          name="filename"
+          placeholder="Upload your invitation"
+        />
+
+        <button name="submit">Submit</button>
+      </form>
+
+      <section class="hide" id="form-error"></section>
+
+      <section class="theme-switcher">
+        <input type="checkbox" id="switcher" />
+        <label for="switcher">switch</label>
+      </section>
+    </section>
+  </body>
+</html>

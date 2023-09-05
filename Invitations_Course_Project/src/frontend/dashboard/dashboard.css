@@ -1,0 +1,310 @@
+body[data-theme="light"] {
+  --color-1: white;
+  --color-2: black;
+  --color-3: #3aaf9f;
+  --color-4: #eee; /* input field background */
+  --color-5: cornflowerblue; /*used for navbar*/
+  --color-6: blueviolet;
+  --color-7: beige;
+  --color-8: rgb(106, 106, 241);
+}
+
+body[data-theme="dark"] {
+  --color-1: #bb86fc;
+  --color-2: white;
+  --color-3: black;
+  --color-4: rgb(214, 211, 211);
+  --color-5: #bb86fc;
+  --color-6: black;
+  --color-7: rgb(114, 147, 154);
+  --color-8: rgb(54, 54, 119);
+}
+
+body {
+  background-color: var(--color-3);
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-5);
+  align-items: center;
+  padding: 0 10px 15px 0;
+}
+
+nav ul {
+  list-style: none;
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 24px;
+  color: white;
+}
+
+.logout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logout h3 {
+  font-size: 24px;
+  color: white;
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.logout button {
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#invitations {
+  width: 700px;
+  margin: 100px auto;
+  gap: 70px;
+  padding: 0 auto;
+  border: 2px solid var(--color-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px;
+  background-color: var(--color-1);
+  border-radius: 25px;
+}
+
+#invitations p {
+  font-size: 24px;
+}
+
+#invitations .likes-section p {
+  font-size: 18px;
+  font-style: italic;
+}
+
+#invitations .likes-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+#invitations .invitation,
+.default-invitation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  border: 2px solid var(--color-6);
+  background-color: var(--color-1);
+  border-radius: 25px;
+  padding: 20px 40px;
+}
+
+#invitations button {
+  font-size: 20px;
+  padding: 5px 20px;
+  background-color: var(--color-8);
+  color: white;
+  border: 1px solid blueviolet;
+}
+
+#invitations button:disabled {
+  cursor: no-drop;
+  color: #ccc;
+  opacity: 0.4;
+}
+
+#invitations img {
+  width: 600px;
+  height: 500px;
+}
+
+.hide {
+  display: none;
+}
+
+#invitations .default-invitation .content {
+  background-color: var(--color-7);
+  width: 100%;
+}
+
+#invitations .default-invitation h2 {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-style: italic;
+}
+
+#invitations .default-invitation .content p {
+  width: 580px;
+  font-size: 24px;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#invitations .default-invitation .like-message {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+#invitations .invitation .like-message {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.theme-switcher {
+  position: absolute;
+  right: 160px;
+  top: 45px;
+}
+
+.theme-switcher input {
+  width: 0;
+  height: 0;
+  display: none;
+  visibility: hidden;
+}
+
+.theme-switcher label {
+  cursor: pointer;
+  display: block;
+  text-indent: -9999px;
+  height: 30px;
+  width: 60px;
+  border-radius: 50px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s ease background-color;
+}
+
+.theme-switcher label::after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  background-color: rgb(46, 42, 68);
+  transition: 0.5s ease;
+}
+
+.theme-switcher input:checked + label::after {
+  left: calc(100% - 25px);
+  background-color: aliceblue;
+}
+
+.theme-switcher input:checked + label {
+  background-color: rgb(25, 26, 37);
+  border: 2px solid whitesmoke;
+}
+
+@media (max-width: 930px) {
+  nav ul {
+    gap: 15px;
+  }
+
+  nav ul li a {
+    font-size: 14px;
+  }
+
+  .logout h3 {
+    font-size: 14px;
+  }
+
+  .logout button {
+    font-size: 12px;
+  }
+
+  #invitations {
+    width: 500px;
+    margin: 50px auto;
+    gap: 30px;
+    padding: 30px;
+  }
+
+  #invitations p {
+    font-size: 16px;
+  }
+
+  #invitations .likes-section p {
+    font-size: 14px;
+  }
+
+  #invitations .likes-section {
+    gap: 10px;
+  }
+
+  #invitations .invitation,
+  .default-invitation {
+    padding: 10px 30px;
+    width: auto;
+  }
+
+  #invitations button {
+    font-size: 16px;
+    padding: 5px 15px;
+  }
+
+  #invitations img {
+    width: 400px;
+    height: 300px;
+  }
+
+  #invitations .default-invitation h2 {
+    font-size: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  #invitations .default-invitation .content p {
+    width: auto;
+    font-size: 16px;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  #invitations .default-invitation .like-message {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  #invitations .invitation .like-message {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  .theme-switcher {
+    right: 100px;
+    top: 35px;
+  }
+
+  .theme-switcher label {
+    height: 20px;
+    width: 40px;
+  }
+
+  .theme-switcher label::after {
+    width: 15px;
+    height: 15px;
+  }
+
+  .theme-switcher input:checked + label::after {
+    left: calc(100% - 20px);
+  }
+}

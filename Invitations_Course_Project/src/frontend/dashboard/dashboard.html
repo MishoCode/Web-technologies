@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./dashboard.css" />
+    <script src="dashboard.js" type="module" defer></script>
+    <script>
+      if (
+        !localStorage.getItem("isLoggedIn") ||
+        localStorage.getItem("isLoggedIn") === "false"
+      ) {
+        window.location.replace("../login/login.html");
+      }
+    </script>
+    <title>Document</title>
+  </head>
+  <body data-theme="light">
+    <nav>
+      <ul>
+        <li>
+          <a href="../create-invitation/create-invitation.html"
+            >Create invitation</a
+          >
+        </li>
+        <li>
+          <a href="../upcoming-invitations/upcoming-invitations.html"
+            >Upcoming invitations</a
+          >
+        </li>
+        <li><a href="#">All invitations</a></li>
+      </ul>
+
+      <section class="logout">
+        <form>
+          <button name="submit">Logout</button>
+        </form>
+      </section>
+    </nav>
+
+    <section id="invitations"></section>
+
+    <section class="theme-switcher">
+      <input type="checkbox" id="switcher" />
+      <label for="switcher">switch</label>
+    </section>
+  </body>
+</html>
