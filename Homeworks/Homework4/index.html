@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Домашно 4</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h2>Регистрация</h2>
+
+    <form>
+      <input id="username" type="text" placeholder="Потребителско име" />
+      <p class="error hide" id="username-error">
+        Потребителското име е задължително поле и трябва да съдържа между 3 и 10
+        символа
+      </p>
+
+      <input id="name" type="text" placeholder="Име" />
+      <p class="error hide" id="name-error">
+        Името е задължително поле и трябва да съдържа най-много 50 символа
+      </p>
+
+      <input id="family-name" type="text" placeholder="Фамилия" />
+      <p class="error hide" id="family-name-error">
+        Фамилията е задължително поле и трябва да съдържа най-много 50 символа
+      </p>
+
+      <input id="email" type="email" placeholder="Имейл" />
+      <p class="error hide" id="email-error">
+        Имейлът е задължително поле и трябва да e валиден
+      </p>
+
+      <input id="password" type="password" placeholder="Парола" />
+      <p class="error hide" id="password-error">
+        Паролата е задължително поле, трябва да е дълга между 6 и 10 символа и
+        да включва главни букви, малки букви и цифри
+      </p>
+
+      <input id="street" type="text" placeholder="Улица" />
+      <input id="city" type="text" placeholder="Град" />
+
+      <input id="postal-code" type="text" placeholder="Пощенски код" />
+      <p class="error hide" id="postal-code-error">Пощенският код е в невалиден формат</p>
+
+
+      <button id="register-btn">Предай</button>
+    </form>
+
+    <p class="error hide" id="form-error">Вече има регистриран такъв потребител</p>
+
+    <h3 id="success" class="hide">Вие се регистрирахте успешно!</h3>
+  </body>
+</html>

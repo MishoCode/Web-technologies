@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Grid</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#intro">Увод</a></li>
+          <li><a href="#terms">Основни понятия</a></li>
+          <li><a href="#properties">CSS Grid свойства</a></li>
+          <ul>
+            <li>
+              <a href="#grid-container-properties"
+                >Свойства на grid контейнера</a
+              >
+            </li>
+            <li>
+              <a href="#grid-children-properties">Свойства на grid items</a>
+            </li>
+          </ul>
+          <li>
+            <a href="#functions-and-units">Функции и мерни единици</a>
+          </li>
+          <li>
+            <a href="#css-subgrid">CSS Subgrid</a>
+          </li>
+          <li>
+            <a href="#sources">Източници</a>
+          </li>
+        </ul>
+      </nav>
+
+      <section class="content">
+        <header>
+          <h1 class="title">CSS Grid</h1>
+          <h2>Изготвил: Михаел Иванов</h2>
+        </header>
+
+        <section class="content-section">
+          <h2 id="intro">Увод</h2>
+          <p>
+            Прецизното позициониране на html елементи е от съществено значение
+            за осигуряването на добър дизайн на една уеб страница. CSS Grid
+            изгледът е похват в CSS, който се грижи именно за това. Основната
+            цел на създаването му е била да се преодолеят трудностите, които са
+            възниквали в преди това използваните начини за позициониране (като
+            html таблици или floats). В момента CSS Grid изгледът се поддържа от
+            всички основни браузъри и се използва често, ако искаме по-разчупено
+            позициониране на определени елементи. <a href="#source1">[1]</a
+            ><a href="#source4">[4]</a>
+          </p>
+        </section>
+        <section class="content-section">
+          <h2 id="terms">Основни понятия</h2>
+          <p>
+            Основният елемент, върху който се прилага техниката CSS Grid, се
+            нарича grid контейнер. Това е елементът, чието display свойство има
+            стойност grid. Всяко пряко дете на този контейнер се нарича grid
+            item. Важно е да се отбележи, че децата на контейнера, които не са
+            преки (т.е са деца на неговите деца), не са grid items.
+            <a href="#source1">[1]</a><a href="#source4">[4]</a>
+          </p>
+          <section class="html-example">
+            <section class="html-example-code">
+              <h5>&lt;div class="container"&gt;</h5>
+              <p>&lt;div class="item"&gt; &lt;/div&gt;</p>
+              <p>&lt;div class="item"&gt; &lt;/div&gt;</p>
+              <p>&lt;div class="item"&gt; &lt;/div&gt;</p>
+              <h5>&lt;/div&gt;</h5>
+            </section>
+            <p>
+              Фигура 1: Пример за html елемент, който ще играе ролята на
+              контейнер
+            </p>
+          </section>
+          <p>
+            Идеята на grid изгледа е да имаме редове и колони, в които да
+            разположим различните grid items. Разделителните линии между
+            колоните и редовете ще наричаме grid lines, a пространството между
+            две съседни разделителни линии на редове и две съседни разделителни
+            линии на колони - grid cell.
+          </p>
+          <p>
+            Мястото, ограничено от две съседни резделителни линии, се нарича
+            grid track.
+          </p>
+          <p>Областта, ограничена от четири линии, се нарича grid area.</p>
+          <section class="image-example">
+            <div>
+              <img
+                class="image"
+                src="./img/terms-grid-line.svg"
+                alt="gird-line-example"
+              />
+              <p>Фигура 2: grid line</p>
+            </div>
+            <div>
+              <img
+                class="image"
+                src="./img/terms-grid-cell.svg"
+                alt="gird-cell-example"
+              />
+              <p>Фигура 3: grid cell</p>
+            </div>
+            <div>
+              <img
+                class="image"
+                src="./img/terms-grid-track.svg"
+                alt="gird-track-example"
+              />
+              <p>Фигура 4: grid track</p>
+            </div>
+            <div>
+              <img
+                class="image"
+                src="./img/terms-grid-area.svg"
+                alt="gird-area-example"
+              />
+              <p>Фигура 5: grid area</p>
+            </div>
+          </section>
+        </section>
+
+        <section class="content-section">
+          <h2 id="properties">CSS Grid свойства</h2>
+          <section class="grid-properties">
+            <h3 id="grid-container-properties">
+              Свойства на grid контейнера<a href="#source1">[1]</a>
+            </h3>
+            <ul>
+              <li>
+                <h4>grid-template-columns и gird-template-rows</h4>
+                <section>
+                  Дефинират редовете и колоните в grid контейнера. Приемат
+                  редица от стойности, разделени с интервал. Тези стойности
+                  показват колко колони (или редове) имаме и какъв е размерът на
+                  всяка от тях. Имаме следните възможности за задаване на
+                  стойности:
+                  <ul>
+                    <li>
+                      none - Това е стойността по подразбиране. Колони се
+                      създават, ако е необходимо
+                    </li>
+
+                    <li>
+                      auto - Размерът на колоните (редовете) се определя от
+                      размера на контейнера и от размера на тези grid items,
+                      които се съдържат в него
+                    </li>
+
+                    <li>
+                      max-content - Размерът на всяка колона (ред) зависи от
+                      размерa на най-големия grid item, който ще влезе в
+                      колоната (реда)
+                    </li>
+
+                    <li>
+                      min-content - Размерът на всяка колона (ред) зависи от
+                      размерa на най-малкия grid item, който ще влезе в колоната
+                      (реда)
+                    </li>
+                  </ul>
+                </section>
+                <section class="css-example">
+                  <section class="css-example-code">
+                    <h5>.grid-container {</h5>
+                    <p>display: grid;</p>
+                    <p>grid-template-columns: 30px 200px auto 100px;</p>
+                    <h5>}</h5>
+                  </section>
+                  <p>
+                    Фигура 6: Пример за създаването на grid контейнер с 4 колони
+                  </p>
+                </section>
+                <p>
+                  Ако дадена стойност за размер на колона се повтаря, добра
+                  практика е да използваме функцията repeat.
+                </p>
+                <section class="css-example">
+                  <section class="css-example-code">
+                    <h5>.container {</h5>
+                    <p>grid-template-columns: repeat(3, 20px);</p>
+                    <h5>}</h5>
+                  </section>
+                  <p>Фигура 7: Пример за употреба на функцията repeat</p>
+                </section>
+
+                е еквивалентно на
+
+                <section class="css-example">
+                  <section class="css-example-code">
+                    <h5>.container {</h5>
+                    <p>grid-template-columns: 20px 20px 20px;</p>
+                    <h5>}</h5>
+                  </section>
+                  <p>
+                    Фигура 8: Еквивалентна дефиниция, без да използваме repeat
+                  </p>
+                </section>
+
+                <p>
+                  Има възможност и експлицитно да именуваме линиите между
+                  отделните колони(редове). За целта използваме следния
+                  синтаксис:
+                </p>
+                <section class="css-example">
+                  <section class="css-example-code">
+                    <h5>.container {</h5>
+                    <p>
+                      grid-template-columns: [first] 40px [line2] 50px [line3]
+                      auto
+                    </p>
+                    <p>[col4-start] 50px [five] 40px [end];</p>
+                    <p>grid-template-rows: [row1-start] 25% [row1-end] 100px</p>
+                    <p>[third-line] auto [last-line];</p>
+                    <h5>}</h5>
+                  </section>
+                  <p>Фигура 9: Експлицитно именуване на grid lines</p>
+                </section>
+              </li>
+              <li>
+                <h4>grid-template-areas</h4>
+                <section>
+                  Идеята тук е всяка клетка в контейнера да си има име и на
+                  базата на това име да определим кой елемент колко и кои клетки
+                  да заема. За целта на всеки grid item даваме стойност на
+                  свойството му grid-area. Тази стойност трябва да е име на
+                  клетка от контейнера. Примерът илюстрира това по-добре:
+                  <section class="image-and-code-example">
+                    <section class="css-example">
+                      <section class="css-example-code">
+                        <h5>.item-a {</h5>
+                        <p>grid-area: header;</p>
+                        <h5>}</h5>
+                        <br />
+                        <h5>.item-b {</h5>
+                        <p>grid-area: main;</p>
+                        <h5>}</h5>
+                        <br />
+                        <h5>.item-c {</h5>
+                        <p>grid-area: sidebar;</p>
+                        <h5>}</h5>
+                        <br />
+                        <h5>.item-d {</h5>
+                        <p>grid-area: footer;</p>
+                        <h5>}</h5>
+                        <br />
+                        <h5>.container {</h5>
+                        <p>display: grid;</p>
+                        <p>grid-template-columns: 50px 50px 50px 50px;</p>
+                        <p>grid-template-rows: auto;</p>
+                        <p>grid-template-areas:</p>
+                        <p>"header header header header"</p>
+                        <p>"main main . sidebar"</p>
+                        <p>"footer footer footer footer";</p>
+                        <h5>}</h5>
+                      </section>
+                      <p>Фигура 10: Дефиниция на grid-template-areas</p>
+                    </section>
+
+                    <section class="css-example-image">
+                      <div>
+                        <img
+                          class="image"
+                          src="./img/dddgrid-template-areas.svg"
+                          alt="grid-template-areas-example"
+                        />
+                        <p>
+                          Фигура 11: Визуализация на примера за
+                          grid-template-areas
+                        </p>
+                      </div>
+                    </section>
+                  </section>
+
+                  <p>
+                    Всеки ред в дефиницията на grid-template-areas трябва да има
+                    един и същ брой клетки. Ако искаме дадена клетка да е
+                    празна, използваме точка.
+                  </p>
+                </section>
+              </li>
+              <li>
+                <h4>grid-template</h4>
+                <section>
+                  Позволява наведнъж да декларираме grid-template-columns,
+                  grid-template-rows и grid-template-areas.
+                </section>
+              </li>
+              <li>
+                <h4>column-gap и row-gap</h4>
+                <section>
+                  Използват се за дефиниране на дебелината на разделителните
+                  линии между колоните и редовете съответно. Ефект има само
+                  върху вътрешните за контейнера grid lines. Дебелината на
+                  външните очертания на grid контейнера не се променя. Приемат
+                  като стойност число в съответната мерна единица.
+                </section>
+              </li>
+              <li>
+                <h4>gap</h4>
+                <section>
+                  Oбединява column-gap и row-gap. Приема двойка числа,
+                  характеризиращи съответно дебелината на разделителните линии
+                  между редовете и между колоните. Ако е посочена само една
+                  стойност, приема се, че тя се отнася и за редовете и за
+                  колоните.
+                </section>
+              </li>
+              <li>
+                <h4>justify-items</h4>
+                <section>
+                  Нарежда съдържанието на контейнера(grid items) хоризонтално.
+                  Приема следните стойности:
+                  <ul>
+                    <li>
+                      start - Позиционира всеки grid-item най-вляво в
+                      определената от него grid cell
+                    </li>
+                    <li>
+                      end - Позиционира всеки grid-item най-вдясно в
+                      определената от него grid cell
+                    </li>
+                    <li>
+                      center - Центрира всеки grid-item в неговата grid cell
+                      така, че отляво и отдясно да има еднакво разстояние
+                    </li>
+                    <li>
+                      stretch - Всеки grid-item изпълва целият grid cell, в
+                      който се намира. Това е стойността по подразбиране
+                    </li>
+                  </ul>
+                </section>
+                <section class="image-example">
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-items-start.svg"
+                      alt="justify-items-start"
+                    />
+                    <p>Фигура 12: justify-items: start</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-items-end.svg"
+                      alt="justify-items-end"
+                    />
+                    <p>Фигура 13: justify-items: end</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-items-center.svg"
+                      alt="justify-items-center"
+                    />
+                    <p>Фигура 14: justify-items: center</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-items-stretch.svg"
+                      alt="justify-items-stretch"
+                    />
+                    <p>Фигура 15: justify-items: stretch</p>
+                  </div>
+                </section>
+              </li>
+              <li>
+                <h4>align-items</h4>
+                <section>
+                  Нарежда всички grid items вертикално. Приема следните
+                  стойности:
+                  <ul>
+                    <li>
+                      start - Всеки grid item се позиционира най-горе в
+                      определения от него grid cell
+                    </li>
+                    <li>
+                      end - Всеки се позиционира най-долу в определения от него
+                      grid cell
+                    </li>
+                    <li>
+                      center - Всеки grid item се позиционира в определения от
+                      него grid cell, така че да до горния и до долния край на
+                      gird cell-а да има еднакво разстояние.
+                    </li>
+                    <li>
+                      stretch - Всеки grid item изпълва целият grid cell, в
+                      който се намира. Това е стойността по подразбиране
+                    </li>
+                  </ul>
+                </section>
+                <section class="image-example">
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-items-start.svg"
+                      alt="align-items-start"
+                    />
+                    <p>Фигура 16: align-items: start</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-items-end.svg"
+                      alt="align-items-end"
+                    />
+                    <p>Фигура 17: align-items: end</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-items-center.svg"
+                      alt="align-items-center"
+                    />
+                    <p>Фигура 18: align-items: center</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-items-stretch.svg"
+                      alt="align-items-stretch"
+                    />
+                    <p>Фигура 19: align-items: stretch</p>
+                  </div>
+                </section>
+              </li>
+              <li>
+                <h4>place-items</h4>
+                <section>
+                  Позволява едновременно да дадем стоност на justify-items и
+                  align-items. Ако подадем само една стойност, тя се присвоява
+                  както на justify-items, така и на align-items.
+                </section>
+              </li>
+              <li>
+                <h4>justify-content</h4>
+                <section>
+                  Възможно е сумата от големините на колоните да е по-малка от
+                  дължината на grid контейнера(например, дължината на контейнера
+                  е 300px, а сме дефинирали три колони, всяка с големина 50px).
+                  В този случай, използвайки justify-content, можем да укажем
+                  как да бъде разпределено оставащото пространство между
+                  колоните. Имаме следните възможности:
+                  <ul>
+                    <li>
+                      start - подравнява колоните една до друга, без да има
+                      разстояние между тях, като започне от най-левия край на
+                      контейнера
+                    </li>
+                    <li>
+                      end - подравнява колоните една до друга, без да има
+                      разстояние между тях, като започне от най-десния край на
+                      контейнера
+                    </li>
+                    <li>
+                      center - разполага колоните в центъра на контейнера, а
+                      оставащото място се разпределя равномерно отляво и отдясно
+                    </li>
+                    <li>
+                      stretch - променя размера на grid item-ите, така че да
+                      изпълнят целия контейнер и да няма свободно място
+                    </li>
+                    <li>
+                      space-around - между всеки две колони се осатвя еднакво
+                      разстояние, а между крайните колони и конура на контейнера
+                      разстоянието е наполовина от това между две съседни колони
+                    </li>
+                    <li>
+                      space-between - между всеки две колони се осатвя еднакво
+                      разстояние, а крайните колони са залепени за контура на
+                      контейнера
+                    </li>
+                    <li>
+                      space-evenly - между всеки две колони се оставя еднакво
+                      разстояние, като крайните колони са на същото това
+                      разстояние от контура на контейнера
+                    </li>
+                  </ul>
+                </section>
+                <section class="image-example">
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-content-start.svg"
+                      alt="justify-content-start"
+                    />
+                    <p>Фигура 20: justify-content: start</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-content-end.svg"
+                      alt="justify-content-end"
+                    />
+                    <p>Фигура 21: justify-content: end</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-content-center.svg"
+                      alt="justify-content-center"
+                    />
+                    <p>Фигура 22: justify-content: center</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-content-stretch.svg"
+                      alt="justify-content-stretch"
+                    />
+                    <p>Фигура 23: justify-content: stretch</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-content-space-around.svg"
+                      alt="justify-content-space-around"
+                    />
+                    <p>Фигура 24: justify-content: space-around</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-content-space-between.svg"
+                      alt="justify-content-space-between"
+                    />
+                    <p>Фигура 25: justify-content: space-between</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-content-space-evenly.svg"
+                      alt="justify-content-space-evenly"
+                    />
+                    <p>Фигура 26: justify-content: space-evenly</p>
+                  </div>
+                </section>
+              </li>
+              <li>
+                <h4>align-content</h4>
+                <section>
+                  В случай, че сумата от големините на редовете е по-голяма от
+                  височината на grid контейнера, чрез align-content можем да
+                  определим как да бъде разпределено оставащото пространство.
+                  Имаме следните възможности:
+                  <ul>
+                    <li>
+                      start - подравнява редовете един до друг, без да има
+                      разстояние между тях, като се започне от най-горния край
+                      на контейнера
+                    </li>
+                    <li>
+                      end - подравнява редовете един до друг, без да има
+                      разстояние между тях, като се започне от най-долния край
+                      на контейнера
+                    </li>
+                    <li>
+                      center - разполага редовете в центъра на контейнера, а
+                      оставащото място се разпределя равномерно отгоре и отдолу
+                    </li>
+                    <li>
+                      stretch - променя размера на grid item-ите, така че да
+                      изпълнят целия контейнер и да няма свободно място
+                    </li>
+                    <li>
+                      space-around - между всеки два реда се оставя еднакво
+                      разстояние, а между крайните редове и конура на контейнера
+                      разстоянието е на половина от това между два съседни реда
+                    </li>
+                    <li>
+                      space-between - между всеки два реда се осатвя еднакво
+                      разстояние, а крайните редове са залепени за контура на
+                      контейнера
+                    </li>
+                    <li>
+                      space-evenly - между всеки два реда се оставя еднакво
+                      разстояние, като крайните редове са на същото това
+                      разстояние от контура на контейнера
+                    </li>
+                  </ul>
+                </section>
+                <section class="image-example">
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-content-start.svg"
+                      alt="align-content-start"
+                    />
+                    <p>Фигура 27: align-content: start</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-content-end.svg"
+                      alt="align-content-end"
+                    />
+                    <p>Фигура 28: align-content: end</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-content-center.svg"
+                      alt="align-content-center"
+                    />
+                    <p>Фигура 29: align-content: center</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-content-stretch.svg"
+                      alt="align-content-stretch"
+                    />
+                    <p>Фигура 30: align-content: stretch</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-content-space-around.svg"
+                      alt="align-content-space-around"
+                    />
+                    <p>Фигура 31: align-content: space-around</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-content-space-between.svg"
+                      alt="align-content-space-between"
+                    />
+                    <p>Фигура 32: align-content: space-between</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-content-space-evenly.svg"
+                      alt="align-content-space-evenly"
+                    />
+                    <p>Фигура 33: align-content: space-evenly</p>
+                  </div>
+                </section>
+              </li>
+              <li>
+                <h4>place-content</h4>
+                <section>
+                  Позволява едновременното дефиниране на align-content и
+                  justify-content. Приема две стойности - първата е за
+                  align-content, а втората - за justify-content. Ако е посочена
+                  само една стойност, то тя се присвоява и на align-content, и
+                  на justify-content.
+                </section>
+              </li>
+              <li>
+                <h4>grid-auto-columns/grid-auto-rows</h4>
+                <section>
+                  Когато създавме контейнер и дефинираме какви колони или редове
+                  ще има, ние създаваме експлицитни grid tracks.
+                  <a href="#source2">[2]</a> В някои случаи обаче имаме повече
+                  grid items от наличните клетки в контейнера. Тогава се
+                  генерира автоматично нов grid track, където се помества
+                  елементът, който искаме да вмъкнем. Свойствата
+                  grid-auto-columns и grid-auto-rows ни позволяват да дефинираме
+                  размера на такива автоматично генерирани grid tracks.
+                </section>
+              </li>
+              <li>
+                <h4>
+                  grid-auto-flow <a href="#source1">[1]</a
+                  ><a href="#source3">[3]</a>
+                </h4>
+                <section>
+                  По подразбиране, когато всички клетки на контейнера са заети,
+                  имплицитно се създава нов ред и в него се поставя новият grid
+                  item. Има възможност обаче да контролираме дали да се добавя
+                  ред или колона в такива случаи и за тази цел използваме
+                  свойството grid-auto-flow. То може да приема следните
+                  стойности:
+                  <ul>
+                    <li>
+                      row - Запълват се налчините редове и ако е необходимо се
+                      добавя нов ред
+                    </li>
+                    <li>
+                      column - Запълват се налчините колони и ако е необходимо
+                      се добавя нова колона
+                    </li>
+                    <li>
+                      dense - Елементите на контейнера игнорират реда, в който
+                      са дефинирани в html кода. Така, когато се срещне елемент
+                      в html кода, който не може да се вмести в текущата клетка,
+                      този елемент се прескача, а клетката се запълва с някой от
+                      следващите елементи, които имат достатъчно малък размер.
+                      Целта на този подход е да могат се запълнят колкото се
+                      може повече клетки. Недостатък е, че се нарушава редът,
+                      който сме задали при писането на html.
+                    </li>
+                  </ul>
+                </section>
+              </li>
+              <li>
+                <h4>grid</h4>
+                <section>
+                  Предоставя начин да дефинраме grid-template-rows,
+                  grid-template-columns, grid-template-areas, grid-auto-rows,
+                  grid-auto-columns и grid-auto-flow наведнъж. Приема следните
+                  стойности:
+                  <ul>
+                    <li>
+                      &lt;none&gt; - Всички от изброените свойства приемат
+                      стойности по подразбиране
+                    </li>
+                    <li>&lt;grid-template-rows / grid-template-columns &gt;</li>
+                    <li>&lt;grid-template-areas&gt;</li>
+                    <li>
+                      &lt;grid-template-rows / [grid-auto-flow]
+                      grid-auto-columns&gt;
+                    </li>
+                    <li>
+                      &lt;[grid-auto-flow] grid-auto-rows /
+                      grid-template-columns&gt;
+                    </li>
+                  </ul>
+                </section>
+              </li>
+            </ul>
+          </section>
+          <section class="grid-properties">
+            <h3 id="grid-children-properties">
+              Свойства на grid items<a href="#source1">[1]</a>
+            </h3>
+            <ul>
+              <li>
+                <h4>
+                  grid-column-start/grid-column-end/grid-row-start/grid-column-start
+                </h4>
+                <section>
+                  Чрез тези свойства определяме позицията на даден grid item на
+                  базата на определени ограничителни линии. grid-column-start и
+                  grdi-column-end ограничават разглеждания grid item съответно
+                  отгоре и отдолу, а grid-row-start и grid-column-start - отляво
+                  и отдясно. Стойностите, които всяко от тези свойства може да
+                  приема, са следните:
+                  <ul>
+                    <li>номер или име на grid line</li>
+                    <li>
+                      span n, където n е число, показващо колко колони(редове)
+                      ще заеме даденият grid item
+                    </li>
+                    <li>auto - същото, ако дадем стойност span 1</li>
+                  </ul>
+                </section>
+                <section class="image-and-code-example">
+                  <section class="css-example">
+                    <section class="css-example-code">
+                      <h5>.item-a {</h5>
+                      <p>grid-column-start: 2;</p>
+                      <p class="inner-code">grid-column-end: five;</p>
+                      <p class="inner-code">grid-row-start: row1-start;</p>
+                      <p class="inner-code">grid-row-end: 3;</p>
+                      <h5>}</h5>
+                    </section>
+                    <p>
+                      Фигура 34: css код, демонстриращ употребата на
+                      grid-column-start/grid-column-end/grid-row-start/grid-row-end
+                    </p>
+                  </section>
+                  <section class="css-example-image">
+                    <div>
+                      <img
+                        class="image"
+                        src="./img/grid-column-row-start-end-01.svg"
+                        alt="align-content-space-evenly"
+                      />
+                      <p>
+                        Фигура 35: Визуализация на примера за
+                        grid-column-start/grid-column-end/grid-row-start/grid-row-end
+                      </p>
+                    </div>
+                  </section>
+                </section>
+              </li>
+              <li>
+                <h4>grid-column</h4>
+                <section>
+                  Съкратен вариант на grid-column-start и grid-column-end. Това
+                  свойствo приема две стойности - първата се отнася за
+                  grid-column-start, а втората стойност е за grid-column-end.
+                  Ако е посочена само една стойност, то тя характерирзира
+                  grid-column-start, а за grid-column-end се приема като
+                  стойност span 1
+                </section>
+              </li>
+              <li>
+                <h4>grid-row</h4>
+                <section>
+                  Съкратен вариант на grid-row-start и grid-row-end. Това
+                  свойствo приема две стойности - първата се отнася за
+                  grid-row-start, а втората стойност е за grid-row-end. Ако е
+                  посочена само една стойност, то тя характерирзира
+                  grid-row-start, а за grid-row-end се приема като стойност span
+                  1
+                </section>
+              </li>
+              <li>
+                <h4>justify-self</h4>
+                <section>
+                  Позиционира даден grid item в grid cell, използвайки
+                  хоризонтална ос. Приема следните стойности:
+                  <ul>
+                    <li>
+                      start - Позиционира дадения grid item най-вляво в клетката
+                      от контейнера, която заема
+                    </li>
+                    <li>
+                      end - Позиционира дадения grid item най-вдясно в клетката
+                      от контейнера, която заема
+                    </li>
+                    <li>
+                      center - Позиционира дадения grid item в клетката, която
+                      заема, така че разстоянието отляво и отдясно до границите
+                      на клетката да е едно и също
+                    </li>
+                    <li>
+                      stretch - Изпълва цялата клетка с дадения grid item. Това
+                      е стойността по подразбиране
+                    </li>
+                  </ul>
+                </section>
+                <section class="image-example">
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-self-start.svg"
+                      alt="justify-self-start"
+                    />
+                    <p>Фигура 36: justify-self: start</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-self-end.svg"
+                      alt="justify-self-end"
+                    />
+                    <p>Фигура 37: justify-self: end</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-self-center.svg"
+                      alt="justify-self-center"
+                    />
+                    <p>Фигура 38: justify-self: center</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/justify-self-stretch.svg"
+                      alt="justify-self-stretch"
+                    />
+                    <p>Фигура 39: justify-self: stretch</p>
+                  </div>
+                </section>
+              </li>
+              <li>
+                <h4>align-self</h4>
+                <section>
+                  Позиционира даден grid item в grid cell използвайки вертикална
+                  ос. Приема следните стойности:
+                  <ul>
+                    <li>
+                      start - Позиционира дадения grid item най-горе в клетката
+                      от контейнера, която заема
+                    </li>
+                    <li>
+                      end - Позиционира дадения grid item най-долу в клетката от
+                      контейнера, която заема
+                    </li>
+                    <li>
+                      center - Позиционира дадения grid item в клетката, която
+                      заема, така че разстоянието отгоре и отдолу до границите
+                      на клетката да е едно и също
+                    </li>
+                    <li>
+                      stretch - Изпълва цялата клетка с дадения grid item. Това
+                      е стойността по подразбиране
+                    </li>
+                  </ul>
+                </section>
+                <section class="image-example">
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-self-start.svg"
+                      alt="align-self-start"
+                    />
+                    <p>Фигура 40: align-self: start</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-self-end.svg"
+                      alt="align-self-end"
+                    />
+                    <p>Фигура 41: align-self: end</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-self-center.svg"
+                      alt="align-self-center"
+                    />
+                    <p>Фигура 42: align-self: center</p>
+                  </div>
+                  <div>
+                    <img
+                      class="image"
+                      src="./img/align-self-stretch.svg"
+                      alt="align-self-stretch"
+                    />
+                    <p>Фигура 43: align-self: stretch</p>
+                  </div>
+                </section>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 id="functions-and-units">
+              Често използвани мерни единици и помощни функции
+            </h2>
+            <ul>
+              <li>
+                Мерната единица fr(пропорция)<a href="#source1">[1]</a>
+                <p>
+                  Използва се, за да дефинираме размера на колона или ред, като
+                  част от останалото пространство. Декларация от вида
+                  grid-template-columns: 1fr 3fr; ознчава, че искаме да имаме
+                  две колони в контейнера, чиито размери са в съотношение 1:3,
+                  т.е първата колона ще заема 25% от големината на контейнера, а
+                  втората ще заема 75%.
+                </p>
+              </li>
+              <li>
+                Функцията minmax<a href="#source5">[5]</a>
+                <p>
+                  Идеята на тази функция е да се даде диапазон, в който може да
+                  се мени големината на дадена колона(ред). Например,
+                  декларацията grid-template-columns: minmax(200px, 500px)
+                  700px; казва, че искаме две колони, като размерът на първата е
+                  най-малко 200px и най-много 500px, а втората е 700px. minmax
+                  може да приема мерни единици за пропорция, но само за
+                  стойността на max(втория аргумент). Също така, ако първият
+                  аргумент е по-голям от втория, то вторият аргумент се
+                  игнорира.
+                </p>
+              </li>
+              <li>
+                Фунцкията repeat<a href="#source1">[1]</a>
+                <p>
+                  Представлява удобство, когато искаме да дефинираме няколко
+                  колони(редове) с един и същи размер. Да кажем, че искаме да
+                  имаме 7 колони, всяка с големина 35px. Тогава записът
+                  grid-template-columns: 35px 35px 35px 35px 35px 35px 35px;
+                  може да бъде опростен до grid-template-columns: repeat(7,
+                  35px);
+                </p>
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <section class="content-section">
+          <h2 id="css-subgrid">CSS Subgrid</h2>
+          <section>
+            <p>
+              С усложняването на дизайна на уеб страниците възниква и
+              необходимостта от това да имаме css grid, вложен в друг такъв. На
+              пръв поглед подобен подход излежда лесен за имплементиране - на
+              даден grid-item даваме стойност grid на display полето му. Това
+              обаче не се оказва най-елегантното решение, понеже поражда някои
+              проблеми. Вложените grid-ове стават независими от основния
+              контейнер и се налага да поддържаме подравняването на елементите в
+              два отделни контейнера, което не изглежда удобно. Другият проблем,
+              който възниква е, че този подход пречи на това да имаме responsive
+              web page. По-точно, елементите на вложения контейнер могат да
+              излязат извън очертанията му. Ето защо се налага да се въведе нов
+              начин в CSS за използването на вложени контейнери. Това е
+              стойността subgrid, която могат да приемат свойствата
+              grid-template-rows и grid-template-columns на вложения контейнер.
+              Следният пример описва точно това. <a href="#source6">[6]</a
+              ><a href="#source7">[7]</a>
+            </p>
+            <section class="image-and-code-example">
+              <section class="css-example">
+                <section class="css-example-code">
+                  <h5>.outer-grid {</h5>
+                  <p>display: grid;</p>
+                  <p>grid-template-columns: repeat(9, 1fr);</p>
+                  <p>grid-template-rows: repeat(4, minmax(100px, auto));</p>
+                  <h5>}</h5>
+
+                  <h5>.inner-grid {</h5>
+                  <p>display: grid;</p>
+                  <p>grid-column: 2 / 7;</p>
+                  <p>grid-row: 2 / 4;</p>
+                  <p>grid-template-columns: subgrid;</p>
+                  <p>grid-template-rows: subgrid;</p>
+                  <h5>}</h5>
+
+                  <h5>.subitem {</h5>
+                  <p>grid-column: 3 / 6;</p>
+                  <p>grid-row: 1 / 3;</p>
+                  <h5>}</h5>
+                </section>
+                <p>Фигура 44: css код, демонстриращ работата със subgrid</p>
+              </section>
+
+              <section class="html-example">
+                <section class="html-example-code">
+                  <h5>&lt;div class="grid"&gt;</h5>
+                  <p>&lt;div class="item"&gt;</p>
+                  <p>&lt;div&gt; class="subitem">&lt;/div&gt;</p>
+                  <p>&lt;/div&gt;</p>
+                  <h5>&lt;/div&gt;</h5>
+                </section>
+                <p>Фигура 45: html код, демонстриращ работата със subgrid</p>
+              </section>
+            </section>
+          </section>
+
+          <p>
+            На този етап CSS Subgird се поддържа само от Firefox, но понеже е
+            обещаващо нововъведение, се очаква да има поддръжка и в останалите
+            браузъри в скоро време.
+          </p>
+        </section>
+
+        <section class="content-section">
+          <h2 id="sources">Източници</h2>
+          <p>
+            [1] A Complete Guide To Grid(
+            <a
+              id="source1"
+              href="https://css-tricks.com/snippets/css/complete-guide-grid/"
+              target="_blank"
+              >https://css-tricks.com/snippets/css/complete-guide-grid/
+            </a>
+            ) - последно посетен на 21.11.2022
+          </p>
+          <p>
+            [2] The Difference Between Explicit And Implicit Grids(
+            <a
+              id="source2"
+              href="https://css-tricks.com/difference-explicit-implicit-grids/"
+              target="_blank"
+              >https://css-tricks.com/difference-explicit-implicit-grids/
+            </a>
+            ) - последно посетен на 21.11.2022
+          </p>
+          <p>
+            [3] grid-auto-flow(
+            <a
+              id="source3"
+              href="https://css-tricks.com/almanac/properties/g/grid-auto-flow/"
+              target="_blank"
+              >https://css-tricks.com/almanac/properties/g/grid-auto-flow/
+            </a>
+            ) - последно посетен на 21.11.2022
+          </p>
+          <p>
+            [4] CSS Grid Layout Module(
+            <a
+              id="source4"
+              href="https://www.w3schools.com/css/css_grid.asp"
+              target="_blank"
+              >https://www.w3schools.com/css/css_grid.asp
+            </a>
+            ) - последно посетен на 21.11.2022
+          </p>
+          <p>
+            [5] A Deep Dive Into Css Grid minmax()(
+            <a
+              id="source5"
+              href="https://ishadeed.com/article/css-grid-minmax/"
+              target="_blank"
+              >https://ishadeed.com/article/css-grid-minmax/
+            </a>
+            ) - последно посетен на 21.11.2022
+          </p>
+          <p>
+            [6] CSS Subgrid: What Is It And Why You Need It?(
+            <a
+              id="source6"
+              href="https://www.lambdatest.com/blog/what-is-css-subgrid/"
+              target="_blank"
+              >https://www.lambdatest.com/blog/what-is-css-subgrid/
+            </a>
+            ) - последно посетен на 21.11.2022
+          </p>
+          <p>
+            [7] Subgrid(
+            <a
+              id="source7"
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid"
+              target="_blank"
+              >https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid
+            </a>
+            ) - последно посетен на 21.11.2022
+          </p>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

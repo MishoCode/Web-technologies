@@ -1,0 +1,265 @@
+body {
+  font-size: 18px;
+  margin: 0;
+}
+
+.content .title {
+  text-align: center;
+  font-size: 34px;
+  padding: 10px;
+}
+
+.navbar {
+  width: 22%;
+  height: 100%;
+  position: fixed;
+  float: left;
+  font-weight: bold;
+  font-size: 22px;
+  background-color: aquamarine;
+  top: 0;
+}
+
+.navbar ol {
+  list-style: none;
+  line-height: 35px;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: white;
+}
+
+.content {
+  width: 73%;
+  float: right;
+  text-align: justify;
+  padding-right: 40px;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.content-section {
+  background-color: antiquewhite;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.content-section li h4 {
+  padding: 0;
+  margin: 10px 0;
+}
+
+.image {
+  width: 120px;
+}
+
+.image-example {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 280px);
+  justify-content: space-evenly;
+  row-gap: 50px;
+}
+
+.image-example div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-example div p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.html-example p{
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.html-example-code {
+  max-width: 400px;
+  border: 2px solid black;
+  font-size: 18px;
+  line-height: 8px;
+  background-color: burlywood;
+}
+
+.html-example-code p {
+  padding: 0 20px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.html-example-code h5 {
+  padding-left: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+.css-example p {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.css-example-code {
+  max-width: 700px;
+  border: 2px solid chocolate;
+  border-radius: 25px;
+  padding: 20px;
+  margin: 10px;
+  background-color: antiquewhite;
+  line-height: 8px;
+  font-size: 16px;
+}
+
+.css-example-code p {
+  padding-left: 30px;
+  font-size: 16px;
+  margin: 16px 0;
+  font-weight: 500;
+}
+
+.css-example-code h5 {
+  margin: 0;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.image-and-code-example {
+  display: flex;
+  column-gap: 90px;
+  align-items: center;
+}
+
+.image-and-code-example .css-example-image div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-and-code-example .css-example-image p{
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.image-and-code-example img {
+  width: 400px;
+}
+
+.image-and-code-example .css-example {
+  width: 500px;
+}
+
+@media (max-width: 1200px)  {
+  .content {
+    padding-right: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    width: 74%;
+  }
+
+  .content .title {
+    font-size: 30px;
+  }
+
+  .content h2 {
+    font-size: 20px;
+  }
+
+  .navbar {
+    font-size: 14px;
+    width: 24%;
+  }
+  
+  .navbar ol {
+    line-height: 25px;
+  }
+
+  .image-example {
+    margin: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 140px);
+    justify-content: space-evenly;
+    row-gap: 30px;
+  }
+
+  .image {
+    width: 150px;
+  }
+
+  .image-example {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 250px);
+    justify-content: space-around;
+    row-gap: 50px;
+  }
+
+  .image-example div p {
+    font-size: 10px;
+  }
+
+  .html-example-code {
+    max-width: 300px;
+    font-size: 14px;
+    line-height: 6px;
+  }
+  
+  .html-example-code p {
+    padding: 0 10px;
+  }
+  
+  .html-example-code h5 {
+    padding-left: 10px;
+    font-size: 14px;
+  }
+
+  .css-example p{
+    font-size: 12px;
+  }
+
+  .css-example-code {
+    max-width: 400px;
+    border-radius: 10px;
+    padding: 15px 5px;
+    margin: 5px;
+    line-height: 6px;
+    font-size: 12px;
+  }
+
+  .image-and-code-example {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+  }
+
+  .image-and-code-example .image {
+    width: 250px;
+    margin: 0 auto;
+  }
+
+  .image-and-code-example .css-example-image p {
+    font-size: 12px;
+  }
+
+  .image-and-code-example div {
+    width: 450px;
+  }
+
+  .image-and-code-example div p {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+  }
+}

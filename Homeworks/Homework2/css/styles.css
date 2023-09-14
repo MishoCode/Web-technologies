@@ -1,0 +1,51 @@
+body {
+  background-color: rgb(222, 253, 241);
+}
+
+.registration {
+  border: 1px solid darkgreen;
+  width: 500px;
+  margin: 75px auto;
+  padding: 40px 20px;
+}
+
+.registration input,
+select,
+.register-btn {
+  font-size: 18px;
+  box-sizing: border-box;
+  display: block;
+  width: 90%;
+  margin: 0 auto 15px auto;
+  padding: 5px;
+  border: 2px solid rgb(187, 201, 186);
+}
+
+.register-btn {
+  background-color: rgb(207, 231, 217);
+  color: darkgreen;
+}
+
+button:hover {
+  background-color: rgb(85, 141, 61);
+  color: rgb(222, 253, 241);
+}
+
+.registration input:hover,
+select:hover {
+  border-color: rgb(85, 141, 61);
+}
+
+@media (max-width: 600px) {
+  .registration {
+    width: 300px;
+    padding: 30px 10px;
+  }
+
+  .registration input,
+  select,
+  .register-btn {
+    font-size: 16px;
+    margin: 0 auto 10px auto;
+  }
+}
